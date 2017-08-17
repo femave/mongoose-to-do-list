@@ -1,0 +1,36 @@
+extends ../tasks
+
+//- block link
+
+  //- -var selected = 'todo';
+  
+block content
+  //- include ../includes/tabs
+  .container
+    div.row
+      div.col-md-6.col-md-offset-3
+        section
+          h1 TO-DO list
+        h3 To do app made by Marc V.
+    
+    
+        form.form-horizontal(action='/tasks', method='POST')
+
+          fieldset    
+            .input-group
+              input.form-control(name='title' type='text', placeholder='To Do...', autofocus)
+              span.input-group-btn
+                button.btn.btn-default ToDo!
+
+        h3 List
+        ul.list-group
+          each task in tasks
+            li.list-group-item(class=task.done && 'selected')
+              p.taskItem= task.title
+              input.hidden.inpTask(value=task.title)
+              p= task.createdAt 
+                input.hidden.taskId(value=task._id)
+                button.remove.btn-primary.pull-right Done task
+                button.delete.btn-danger.pull-right Delete task
+        button.removeAll Done all list
+              

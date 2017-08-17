@@ -1,0 +1,16 @@
+block link
+
+-var menu = { 'todo': '/task-page', 'complete': '/complete'};
+  .header.clearfix
+    div.row
+      div.col-md-6.col-md-offset-3
+        ul.nav.nav-tabs
+          each val, key in menu
+            if selected === key
+              li.active(role='presentation')
+                a(href=val, title=key)= key
+            else
+              li(role='presentation')
+                a(href=val, title=key)= key
+          li.pull-right
+            a.logOut Log Out
